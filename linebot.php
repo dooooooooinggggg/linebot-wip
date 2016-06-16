@@ -20,9 +20,9 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json; charser=UTF-8',
-    'X-Line-ChannelID:取得したチャンネルID',
-    'X-Line-ChannelSecret:取得したチャンネルシークレット',
-    'X-Line-Trusted-User-With-ACL:取得したMID'
+    'X-Line-ChannelID:1468184431',
+    'X-Line-ChannelSecret:26888f8adb849a69c154fcf309aff2a9',
+    'X-Line-Trusted-User-With-ACL:udfe52feea9ae153745a74c3dc38e1b8a'
     ));
 $result = curl_exec($ch);
 curl_close($ch);
