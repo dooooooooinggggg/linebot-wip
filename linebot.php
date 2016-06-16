@@ -1,17 +1,42 @@
 <?php
 $json_string = file_get_contents('php://input');
 $jsonObj = json_decode($json_string);
-$to = $jsonObj->{"result"}[0]->{"content"}->{"from"};
+$to = $jsonObj->{"result"}[0]->{"content"}->{"from"};//送る相手
+$text = $jsonObj->{"result"}[0]->{"content"}->{"text"};//これがユーザーが送ってきた文章
+
+//$nickname=$jsonObj->{"contacts"}[0]->{"displayName"};
+//$nickname=getDisplayName($to);
+
+$username = $to;
+
+
+$logtext="「".$text."」"." from ".$to." at ".date("Y年m月d日 H時i分s秒");
+$sendtext="「".$text."」"."\n"." from ".$to."\n"." at ".date("Y年m月d日 H時i分s秒");
+
+/*log出力*/
+$filepass="../../linelog/log.txt";
+$fp = fopen($filepass, "a");
+//fwrite($fp, $username."/".date("Y年m月d日 H時i分s秒").":".$text."\n");
+fwrite($fp, $logtext."\n");
+// "[".$text."]"."from ".$username." at".date("Y年m月d日 H時i分s秒")."\n"
+fclose($fp);
+
 
 // テキストで返事をする場合
-$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>"me too"];
+//$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>"僕も".$text];
+$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>$sendtext];
+//$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>$to];
+
 // 画像で返事をする場合
 //$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"画像URL","previewImageUrl"=>"サムネイル画像URL"];
 // 他にも色々ある
 // ....
 
 // toChannelとeventTypeは固定値なので、変更不要。
+/*ここは*/
 $post_data = ["to"=>[$to],"toChannel"=>"1383378250","eventType"=>"138311608800106203","content"=>$response_format_text];
+/*変えない*/
+
 
 $ch = curl_init("https://trialbot-api.line.me/v1/events");
 curl_setopt($ch, CURLOPT_POST, true);
