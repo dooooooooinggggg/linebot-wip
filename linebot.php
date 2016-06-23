@@ -12,20 +12,14 @@ $logtext="「".$text."」"." from ".$to." at ".date("Y年m月d日 H時i分s秒")
 //$sendtext="「".$text."」"."\n"." from ".$to."\n"." at ".date("Y年m月d日 H時i分s秒");
 $sendtext=$text."、じゃねぇんだよ、もっと面白いこと言え。";
 
-if($text=='ばか'){
-	$sendtext="ばかはお前だ。";
+
+if($text="ばか"){
+	$sendtext="ばかはお前だ";
 }
 
 if($to=='u151acff125398559d1a25bd525a86f53'){
 	$sendtext='みひろくん♪'."\n".$sendtext;
 }
-
-
-
-
-/*後で消すよん*/
-
-
 /*log出力*/
 $filepass="../../linelog/log.txt";
 $fp = fopen($filepass, "a");
@@ -66,23 +60,21 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 
+$sendtext="notification\n\n"."「".$text."」"."\n"." from ".$to."\n"." at ".date("Y年m月d日 H時i分s秒");
+$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>$sendtext];
 
-	$sendtext="notification\n\n"."「".$text."」"."\n"." from ".$to."\n"." at ".date("Y年m月d日 H時i分s秒");
-	$response_format_text = ['contentType'=>1,"toType"=>1,"text"=>$sendtext];
+$post_data = ["to"=>["u28aabf00130810b40076ea8065c7e276"],"toChannel"=>"1383378250","eventType"=>"138311608800106203","content"=>$response_format_text];
 
-	$post_data = ["to"=>["u28aabf00130810b40076ea8065c7e276"],"toChannel"=>"1383378250","eventType"=>"138311608800106203","content"=>$response_format_text];
-
-	$ch = curl_init("https://trialbot-api.line.me/v1/events");
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    	'Content-Type: application/json; charser=UTF-8',
-    	'X-Line-ChannelID:1468184431',
-    	'X-Line-ChannelSecret:26888f8adb849a69c154fcf309aff2a9',
-    	'X-Line-Trusted-User-With-ACL:udfe52feea9ae153745a74c3dc38e1b8a'
-    	));
-	$result = curl_exec($ch);
-	curl_close($ch);
-//}
+$ch = curl_init("https://trialbot-api.line.me/v1/events");
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json; charser=UTF-8',
+    'X-Line-ChannelID:1468184431',
+    'X-Line-ChannelSecret:26888f8adb849a69c154fcf309aff2a9',
+    'X-Line-Trusted-User-With-ACL:udfe52feea9ae153745a74c3dc38e1b8a'
+    ));
+$result = curl_exec($ch);
+curl_close($ch);
