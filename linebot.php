@@ -13,12 +13,16 @@ $logtext="「".$text."」"." from ".$to." at ".date("Y年m月d日 H時i分s秒")
 $sendtext=$text."、じゃねぇんだよ、もっと面白いこと言え。";
 
 
-if($text="ばか"){
+if($text=="ばか"){
 	$sendtext="ばかはお前だ";
 }
 
 if($to=='u151acff125398559d1a25bd525a86f53'){
 	$sendtext='みひろくん♪'."\n".$sendtext;
+}
+
+if($text==""){
+	$sendtext="自己紹介してください";
 }
 /*log出力*/
 $filepass="../../linelog/log.txt";
