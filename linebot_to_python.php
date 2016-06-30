@@ -1,8 +1,7 @@
 <?php
 // file name: call_python.php\
 // 引用:http://freetech-e.com/html/callpython.htm
-    $fullPath =
-      'python ./cgi-bin/call_from_php.py abcd 1234';
+    $fullPath = 'python linebot.py abcd 1234';
     exec($fullPath, $outpara);
     echo '<PRE>';
     var_dump($fullPath);
