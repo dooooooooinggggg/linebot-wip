@@ -8,17 +8,17 @@ $to=$content->from;//誰から来たか（変な文字列）
 $message_id=$content->id;
 $content_type=$content->contentType;//コンテントタイプ
 
-$text='460010';
+//$text='460010';
 $fullPath="python linebot.py $text";
 
 exec($fullPath,$outpara);
 
-var_dump($outpara[0]);
-var_dump($outpara);
+//var_dump($outpara[0]);
+//var_dump($outpara);
 /*要編集!!!!!!!!*/
 $sendtext=$outpara[0];
 
-print($sendtext);
+//print($sendtext);
 
 /****************
 **これからの流れ
