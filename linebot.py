@@ -10,8 +10,8 @@ import operator
 if __name__=='__main__':
 
 
-    #receivetext = sys.argv[1]
-    receivetext = '行き'
+    receivetext = sys.argv[1]
+    #receivetext = '行き'
     #ここに処理を書く
 
     if receivetext == '行き':
@@ -20,7 +20,7 @@ if __name__=='__main__':
     	nowtime   = nowhour + nowminute
 
     	nowtime = int(nowtime)
-    	nowtime = 952
+    	nowtime = 952#仮
 
     	gotimetable = timetable.gotimetable
     	#gotimetablekeys = gotimetable.keys().sort()
@@ -39,15 +39,7 @@ if __name__=='__main__':
     		#そのindexのオブジェクトとその次を返す
     		nextindex = timelist[index]
     		firstbus = gotimetable[nextindex]
-		
 
-    		#print timetable.gotimetable
-    		#print gotimetable
-    		#print timelist
-    		#print index#0スタート
-    		#print timelist[index]
-    		#print gotimetable.keys().sort()
-    		#print firstbus
 
     		nexttime = str(timelist[index])
 
@@ -58,5 +50,4 @@ if __name__=='__main__':
 
     #ここまで
 
-    #endtext = nowtime#とりあえず
     print sendtext#ここでphpに戻している。
