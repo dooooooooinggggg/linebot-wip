@@ -7,12 +7,14 @@ $text=$content->text;//送られてきた文章
 $to=$content->from;//誰から来たか（変な文字列）
 $message_id=$content->id;
 $content_type=$content->contentType;//コンテントタイプ
+//$message_time=$content->createdTime;
 
 
 $fullPath="python linebot.py $text";
 
 exec($fullPath,$outpara);
 
+//var_dump($message_time);
 
 /*要編集!!!!!!!!*/
 $sendtext=$outpara[0];
@@ -52,6 +54,7 @@ curl_close($ch);
 
 /*要編集!!!!!!!!*/
 $sendtext="notification\n\n"."「".$text."」"."\n"." from ".$to."\n"." at ".date("Y年m月d日 H時i分s秒");
+//$sendtext=$message_time;
 /**/
 $response_format_text = ['contentType'=>1,"toType"=>1,"text"=>$sendtext];
 
