@@ -10,8 +10,8 @@ import operator
 if __name__=='__main__':
 
 
-    #receivetext = sys.argv[1]
-    receivetext = '行き'
+    receivetext = sys.argv[1]
+    #receivetext = '行き'
     #ここに処理を書く
 
     if receivetext == '行き':
@@ -20,13 +20,15 @@ if __name__=='__main__':
     	nowtime   = nowhour + nowminute
 
     	nowtime = int(nowtime)
+    	#nowtime = 600
 
     	gotimetable = timetable.gotimetable
     	#gotimetablekeys = gotimetable.keys().sort()
-    	#timelist = 
+    	timelist = gotimetable.keys()
+    	timelist = sorted(timelist)
 
 
-    	index = np.searchsorted(gotimetablekeys,nowtime)
+    	index = np.searchsorted(timelist,nowtime)
 
     	#タイムテーブルを参照
     	#リストから時間のみ(keys)を読み出す
@@ -36,14 +38,26 @@ if __name__=='__main__':
     	#
     	#
     	#
+    	#nextindex = timelist[index]
+    	firstbus = gotimetable[timelist[index]]
 
-    	print timetable.gotimetable
-    	print gotimetable
-    	print index
-    	print gotimetable.keys().sort()
+
+    	#print timetable.gotimetable
+    	#print gotimetable
+    	#print timelist
+    	#print index#0スタート
+    	#print timelist[index]
+    	#print gotimetable.keys().sort()
+    	#print firstbus
+
+    	nexttime = str(timelist[index])
+
+    	sendtext = "次のバスは、" + nexttime + "の" + firstbus + "です。"
+    else:
+    	sendtext = "「行き」って入力してください。"
 
     #ここまで
 
-    sendtext = nowtime#とりあえず
+    #endtext = nowtime#とりあえず
 
     print sendtext#ここでphpに戻している。
