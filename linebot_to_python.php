@@ -9,13 +9,13 @@ $message_id=$content->id;
 $content_type=$content->contentType;//コンテントタイプ
 //$message_time=$content->createdTime;
 
-
+$text='a';
 $fullPath="python linebot.py $text";
 
 exec($fullPath,$outpara);
 
 //var_dump($message_time);
-
+var_dump($outpara[0]);
 /*要編集!!!!!!!!*/
 $sendtext=$outpara[0];
 
