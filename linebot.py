@@ -14,17 +14,17 @@ if __name__=='__main__':
     #receivetext = '行き'
     #ここに処理を書く
 
-    if receivetext == '行き':
+    if receivetext == '行き' or receivetext == '帰り':
     	nowhour   = datetime.now().strftime('%H')
     	nowminute = datetime.now().strftime('%M')
     	nowtime   = nowhour + nowminute
 
     	nowtime = int(nowtime)
-    	nowtime = 952#仮
-
-    	gotimetable = timetable.gotimetable
-    	#gotimetablekeys = gotimetable.keys().sort()
-    	timelist = gotimetable.keys()
+    	if receivetext == '行き':
+    		timetable = timetable.gotimetable
+    	elif receivetext == '帰り':
+    		timetable = timetable.backtimetable
+    	timelist = timetable.keys()
     	timelist = sorted(timelist)
 
 
@@ -32,13 +32,8 @@ if __name__=='__main__':
     	if index == len(timelist):
     		sendtext = 'バスはもう終わりました。'
     	else:
-
-    		#タイムテーブルを参照
-    		#リストから時間のみ(keys)を読み出す
-    		#現在の時間のindexを出す
-    		#そのindexのオブジェクトとその次を返す
     		nextindex = timelist[index]
-    		firstbus = gotimetable[nextindex]
+    		firstbus = timetable[nextindex]
 
 
     		nexttime = str(timelist[index])
@@ -48,6 +43,4 @@ if __name__=='__main__':
     else:
     	sendtext = "「行き」って入力してください。"
 
-    #ここまで
-
-    print sendtext#ここでphpに戻している。
+    print sendtext
