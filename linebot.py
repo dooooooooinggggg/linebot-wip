@@ -20,6 +20,7 @@ if __name__=='__main__':
     	nowtime   = nowhour + nowminute
 
     	nowtime = int(nowtime)
+
     	if receivetext == '行き':
     		timetable = timetable.gotimetable
     	elif receivetext == '帰り':
@@ -41,6 +42,6 @@ if __name__=='__main__':
     		sendtext = "次のバスは" + nexttime + "の" + firstbus + "です"
     		sendtext = str(sendtext)
     else:
-    	sendtext = "「行き」って入力してください。"
+    	sendtext = "「行き」あるいは「帰り」と入力してください。"
 
     print sendtext
