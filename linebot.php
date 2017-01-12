@@ -32,17 +32,17 @@ $sendtext=$text."、じゃねぇんだよ、もっと面白いこと言え。";
 
 
 if($text=="ばか"){
-	$sendtext="ばかはお前だ";
+    $sendtext="ばかはお前だ";
 }
 
 if($text==""){
-	$sendtext="自己紹介してください";
+    $sendtext="自己紹介してください";
 }
 
 
 if(in_array($content_type, array(2,3,4))){
-	//api_get_message_content_request($message_id);
-	$sendtext='画像';
+    //api_get_message_content_request($message_id);
+    $sendtext='画像';
 }
 
 
